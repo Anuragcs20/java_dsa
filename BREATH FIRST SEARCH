@@ -1,0 +1,26 @@
+public void depthFirstSearch(){
+   //mark first node as visited
+   lstVertices[0].visited = true;
+   //display the vertex
+   displayVertex(0);   
+   //push vertex index in stack
+   stack.push(0);
+
+   while(!stack.isEmpty()){
+      //get the unvisited vertex of vertex which is at top of the stack
+      int unvisitedVertex = getAdjUnvisitedVertex(stack.peek());
+      //no adjacent vertex found
+      if(unvisitedVertex == -1){
+         stack.pop();
+      }else{
+         lstVertices[unvisitedVertex].visited = true;
+         displayVertex(unvisitedVertex);
+         stack.push(unvisitedVertex);
+      }
+   }
+
+   //stack is empty, search is complete, reset the visited flag        
+   for(int i=0;i<vertexCount;i++){
+      lstVertices[i].visited = false;
+   }        
+}
